@@ -10,8 +10,8 @@ body
 .cubeCarousel
 {
     position: absolute;
-    top: 30%;
-    left: 35%;
+    top: 50%;
+    left: 50%;
     perspective: 800px;
     cursor: pointer;
 }

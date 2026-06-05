@@ -7,6 +7,8 @@ const nav2Element = document.querySelector('.nav2')
 const nav3Element = document.querySelector('.nav3')
 const bodyHTMLElement = document.body
 const backgroundSoundElement = new Audio('./sources/sounds/background-music.mp3')
+backgroundSoundElement.loop = true
+backgroundSoundElement.volume = 0.3
 const buttonSoundElement = document.querySelector('.buttonSoundEqualizer')
 
 // VARIABLES
@@ -196,21 +198,54 @@ cubeCarouselElement.addEventListener('click', (event) =>
     }
 })
 
-// SOUND
+// SOUND HELPERS
+function startSound()
+{
+    document.querySelectorAll('.soundBar').forEach(bar => bar.classList.add('soundIsActive'))
+    backgroundSoundElement.play()
+}
+
+function stopSound()
+{
+    document.querySelectorAll('.soundBar').forEach(bar => bar.classList.remove('soundIsActive'))
+    backgroundSoundElement.pause()
+    backgroundSoundElement.currentTime = 0
+}
+
+// Auto-play on page load (browsers may block this without prior interaction)
+backgroundSoundElement.play()
+    .then(() =>
+    {
+        // Autoplay succeeded — activate equalizer animation
+        document.querySelectorAll('.soundBar').forEach(bar => bar.classList.add('soundIsActive'))
+    })
+    .catch(() =>
+    {
+        // Autoplay blocked — wait for first user interaction to start music
+        const autoPlayFallback = () =>
+        {
+            startSound()
+            document.removeEventListener('click',   autoPlayFallback)
+            document.removeEventListener('keydown', autoPlayFallback)
+            document.removeEventListener('wheel',   autoPlayFallback)
+        }
+        document.addEventListener('click',   autoPlayFallback)
+        document.addEventListener('keydown', autoPlayFallback)
+        document.addEventListener('wheel',   autoPlayFallback)
+    })
+
+// SOUND BUTTON — toggle play/pause
+let soundIsPlaying = true
 buttonSoundElement.addEventListener('click', (event) =>
 {
-    const buttonSoundBar1Element = document.querySelector('.soundBar1')
-    buttonSoundBar1Element.classList.add('soundIsActive')
-
-    const buttonSoundBar2Element = document.querySelector('.soundBar2')
-    buttonSoundBar2Element.classList.add('soundIsActive')
-
-    const buttonSoundBar3Element = document.querySelector('.soundBar3')
-    buttonSoundBar3Element.classList.add('soundIsActive')
-
-    const buttonSoundBar4Element = document.querySelector('.soundBar4')
-    buttonSoundBar4Element.classList.add('soundIsActive')
-
-    backgroundSoundElement.volume = 0.3
-    backgroundSoundElement.play()
+    if (soundIsPlaying)
+    {
+        stopSound()
+        soundIsPlaying = false
+    }
+    else
+    {
+        startSound()
+        soundIsPlaying = true
+    }
 })

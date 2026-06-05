@@ -10,8 +10,8 @@ body
 .cubeCarousel
 {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 30%;
+    left: 35%;
     perspective: 800px;
     cursor: pointer;
 }
@@ -35,13 +35,13 @@ body
 {
     display: flex;
     position: absolute;
-    top: -150px;
-    left: -150px;
-    width: 600px;
-    height: 300px;
+    top: -210px;
+    left: -400px;
+    width: 800px;
+    height: 420px;
     background-size: cover;
     background-position: center center;
-    font-size: 60px;
+    font-size: 72px;
     font-family: 'Italiana', serif;
     text-transform: uppercase;
     color: #ffffff;
@@ -52,10 +52,10 @@ body
     user-select: none;
 }
 
-.cubeCarousel .faceCarousel.zPos { transform:                 translateZ(150px); background-image: url(../images/0-home.png);}
-.cubeCarousel .faceCarousel.yPos { transform: rotateX(-90deg) translateZ(150px); background-image: url(../images/1-sakuras.png);}
-.cubeCarousel .faceCarousel.zNeg { transform: rotateX(180deg) translateZ(150px); background-image: url(../images/2-ginkgos.png);}
-.cubeCarousel .faceCarousel.yNeg { transform: rotateX(90deg)  translateZ(150px); background-image: url(../images/3-bambous.png);}
+.cubeCarousel .faceCarousel.zPos { transform:                 translateZ(210px); background-image: url(../images/0-home.png);}
+.cubeCarousel .faceCarousel.yPos { transform: rotateX(-90deg) translateZ(210px); background-image: url(../images/1-sakuras.png);}
+.cubeCarousel .faceCarousel.zNeg { transform: rotateX(180deg) translateZ(210px); background-image: url(../images/2-ginkgos.png);}
+.cubeCarousel .faceCarousel.yNeg { transform: rotateX(90deg)  translateZ(210px); background-image: url(../images/3-bambous.png);}
 
 .cubeCarousel .faceCarousel.zPos:hover { background-image: url(../images/0-homeHover.png);}
 .cubeCarousel .faceCarousel.yPos:hover { background-image: url(../images/1-sakurasHover.png);}
